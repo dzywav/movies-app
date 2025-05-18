@@ -13,6 +13,8 @@ const apiKey = environment.apiKey;
 })
 export class MoviesService {
 
+  private popularesPage = 0;
+
   constructor(private http: HttpClient) { }
 
   private ejecutarQuery<T>(query: string):Observable<T>{
@@ -23,10 +25,19 @@ export class MoviesService {
 
   }
 
-getFeature(): Observable<RespuestaMDB> {
+  getPopulares(){
 
-  return this.ejecutarQuery<RespuestaMDB>('/discover/movie?');
+    this.popularesPage++;
 
-}
+    const query = `/discover/movie?sort_by=popularuty.desc&page=${this.popularesPage}&`;
+
+    return this.ejecutarQuery<RespuestaMDB>(query);
+  }
+
+  getFeature(): Observable<RespuestaMDB> {
+
+    return this.ejecutarQuery<RespuestaMDB>('/discover/movie?');
+
+  }
 
 }

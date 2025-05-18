@@ -1,0 +1,20 @@
+.galeria-horizontal {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 10px;
+}
+
+.pelicula {
+  flex: 0 0 auto;
+  width: 130px;
+}
+
+.slide-mas{
+  height: 300px;
+}
+
+.btn-mas{
+  position: relative;
+  top: 55%;
+}
