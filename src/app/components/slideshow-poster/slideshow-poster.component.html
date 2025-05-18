@@ -1,0 +1,7 @@
+<div class="galeria-horizontal">
+  <div class="pelicula" *ngFor="let pelicula of peliculas">
+    <ion-card > <!-- Se agrego toString para pasarlo a cadena (click)="verDetalle(pelicula.id.toString())" -->
+      <img class="poster" [src]="pelicula.poster_path | imagen" />
+    </ion-card>
+  </div>
+</div>
