@@ -1,6 +1,15 @@
 <ion-content [fullscreen]="true">
 
 
+<div class="galeria-horizontal">
+  <div class="pelicula" *ngFor="let pelicula of peliculasRecientes">
+    <ion-card > <!-- Se agrego toString para pasarlo a cadena (click)="verDetalle(pelicula.id.toString())" -->
+      <img [src]="pelicula.backdrop_path | imagen" />
+    </ion-card>
+  </div>
+</div>
+
+
 
 
 
