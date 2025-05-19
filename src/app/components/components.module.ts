@@ -5,16 +5,28 @@ import { SlideshowBackdropComponent } from './slideshow-backdrop/slideshow-backd
 import { PipesModule } from '../pipes/pipes.module';
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { SlideshowParesComponent } from './slideshow-pares/slideshow-pares.component';
+import { DetalleComponent } from './detalle/detalle.component';
 
 
 
 @NgModule({
-  declarations: [SlideshowBackdropComponent, SlideshowPosterComponent, SlideshowParesComponent],
-  exports: [SlideshowBackdropComponent, SlideshowPosterComponent, SlideshowParesComponent],
+  declarations: [SlideshowBackdropComponent, 
+    SlideshowPosterComponent, 
+    SlideshowParesComponent, 
+    DetalleComponent
+  ],
+  exports: [
+    SlideshowBackdropComponent, 
+    SlideshowPosterComponent, 
+    SlideshowParesComponent, 
+    DetalleComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,
     PipesModule,
   ]
+
 })
+
 export class ComponentsModule { }

@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RespuestaMDB } from '../interfaces/interfaces';
+import { PeliculaDetalle, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-
 
 const URL = environment.url;
 const apiKey = environment.apiKey;
@@ -17,27 +16,30 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
 
-  private ejecutarQuery<T>(query: string):Observable<T>{
-
-    query = URL + query;
-    query += `api_key=${apiKey}&language=es&include_image_language=es`;
-    return this.http.get<T>(query);
-
+  private ejecutarQuery<T>(query: string): Observable<T> {
+    // Si query ya tiene '?', añadimos '&', si no, añadimos '?'
+    const separator = query.includes('?') ? '&' : '?';
+    const url = `${URL}${query}${separator}api_key=${apiKey}&language=es&include_image_language=es`;    
+    return this.http.get<T>(url);
   }
 
-  getPopulares(){
-
+  getPopulares(): Observable<RespuestaMDB> {
     this.popularesPage++;
-
-    const query = `/discover/movie?sort_by=popularuty.desc&page=${this.popularesPage}&`;
-
+    const query = `/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
     return this.ejecutarQuery<RespuestaMDB>(query);
   }
 
   getFeature(): Observable<RespuestaMDB> {
-
     return this.ejecutarQuery<RespuestaMDB>('/discover/movie?');
-
   }
+
+  getPeliculaDetalle(id: string): Observable<PeliculaDetalle> {
+    return this.ejecutarQuery<PeliculaDetalle>(`/movie/${id}`);
+  }
+
+   getActoresPelicula(id: string): Observable<RespuestaCredits> {
+    return this.ejecutarQuery<RespuestaCredits>(`/movie/${id}/credits`);
+  }
+
 
 }
