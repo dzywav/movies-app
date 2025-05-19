@@ -1,6 +1,6 @@
 <div class="galeria-horizontal">
   <div class="pelicula" *ngFor="let pelicula of peliculas">
-    <ion-card (click)="verDetalle(pelicula.id.toString())">
+    <ion-card mode="md" (click)="verDetalle(pelicula.id.toString())">
       <img class="poster" [src]="pelicula.poster_path | imagen" />
     </ion-card>
   </div>

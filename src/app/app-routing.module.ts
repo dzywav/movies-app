@@ -5,7 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'tabs/tab1', // Ruta de redirección
+    pathMatch: 'full'
+  },
 ];
 @NgModule({
   imports: [
