@@ -33,12 +33,12 @@ Pasos para instalar la aplicación local
 Codigos en terminal:
 git clone https://github.com/usuario/nombre-del-repositorio.git
 cd nombre-del-repositorio
-o hacerlo con github desktop
+O hacerlo con github desktop
 
-2.	Instala las dependencias del proyecto:
+3.	Instala las dependencias del proyecto:
 Asegúrate de tener Node.js y Ionic CLI instalados. Luego ejecuta:
 npm install
 Esto instalará todas las dependencias listadas en el archivo package.json.
 
-3.	Ejecuta la app en modo desarrollo:
+4.	Ejecuta la app en modo desarrollo:
 ionic serve
